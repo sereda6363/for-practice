@@ -2100,38 +2100,38 @@
 
 // -----------------бибилеотека Лоудэш и опция троттл----------------
 
-const coordsOutputRef = document.querySelector('.js-coords')
-console.log("🚀coordsOutputRef", coordsOutputRef)
-let mouseMoveCbInvocationCounter = 0;
+// const coordsOutputRef = document.querySelector('.js-coords')
+// console.log("🚀coordsOutputRef", coordsOutputRef)
+// let mouseMoveCbInvocationCounter = 0;
 
-// const throttledOnMouseMove = _.throttle(onMouseMove, 500) мы перенесли рассписанную константу в функцию сразу
+// // const throttledOnMouseMove = _.throttle(onMouseMove, 500) мы перенесли рассписанную константу в функцию сразу
 
-// window.addEventListener('mousemove', _.throttle(onMouseMove, 500)) временно закоментили для того, чтобы спользовать опцию дэбаунс
+// // window.addEventListener('mousemove', _.throttle(onMouseMove, 500)) временно закоментили для того, чтобы спользовать опцию дэбаунс
 
-function onMouseMove(event) {
-  mouseMoveCbInvocationCounter += 1;
+// function onMouseMove(event) {
+//   mouseMoveCbInvocationCounter += 1;
 
-  coordsOutputRef.textContent = `
-  Количество вызовов onMouseMove: ${ mouseMoveCbInvocationCounter },
-  X: ${ event.clientX }
-  Y: ${event.clientY}
-  `;
-}
+//   coordsOutputRef.textContent = `
+//   Количество вызовов onMouseMove: ${ mouseMoveCbInvocationCounter },
+//   X: ${ event.clientX }
+//   Y: ${event.clientY}
+//   `;
+// }
 
-const inputRef = document.querySelector('.js-input')
-const outputRef = document.querySelector('.js-output')
+// const inputRef = document.querySelector('.js-input')
+// const outputRef = document.querySelector('.js-output')
 
-let inputCbInvocationCounter = 0;
+// let inputCbInvocationCounter = 0;
 
-inputRef.addEventListener('input', _.debounce(onInputChange, 1000))
+// inputRef.addEventListener('input', _.debounce(onInputChange, 1000))
 
-function onInputChange(event) {
-  inputCbInvocationCounter += 1;
+// function onInputChange(event) {
+//   inputCbInvocationCounter += 1;
 
-  outputRef.textContent = `
-  Колличество вызовов onInputChange: ${inputCbInvocationCounter},
-  Значение: ${event.target.value}
-  `;
-}
+//   outputRef.textContent = `
+//   Колличество вызовов onInputChange: ${inputCbInvocationCounter},
+//   Значение: ${event.target.value}
+//   `;
+// }
 
-console.log("Hallo")
+console.log("Первый который мы прописали в боди")
