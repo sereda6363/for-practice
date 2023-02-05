@@ -2050,48 +2050,88 @@
 //   alert("Descendant click handler");
 // });
 
-console.log(document)
+// console.log(document)
 
-const imgEl = document.querySelector('img')
-console.log(imgEl.src)
-imgEl.src = 'https://img1.akspic.ru/previews/0/9/1/1/7/171190/171190-nacionalnyj_park_kaziranga-atmosfera-mir-prirodnyj_landshaft-purpur-550x310.jpg'
-console.log(imgEl.src)
+// const imgEl = document.querySelector('img')
+// console.log(imgEl.src)
+// imgEl.src = 'https://img1.akspic.ru/previews/0/9/1/1/7/171190/171190-nacionalnyj_park_kaziranga-atmosfera-mir-prirodnyj_landshaft-purpur-550x310.jpg'
+// console.log(imgEl.src)
 
-const btnEl = document.querySelector('.btn')
-// console.log(btnEl[1].dataset.action)
-btnEl.classList.add('pop')
-console.log(btnEl)
+// const btnEl = document.querySelector('.btn')
+// // console.log(btnEl[1].dataset.action)
+// btnEl.classList.add('pop')
+// console.log(btnEl)
 
-const ttt = document.querySelector('.collor-picker')
+// const ttt = document.querySelector('.collor-picker')
 
-console.log(ttt)
-console.log(ttt.children)
+// console.log(ttt)
+// console.log(ttt.children)
 
-const menuEl = document.querySelector('#menu')
-console.log(menuEl)
-console.log(menuEl.children)
-console.log(menuEl.lastElementChild)
-console.log(menuEl.firstElementChild)
+// const menuEl = document.querySelector('#menu')
+// console.log(menuEl)
+// console.log(menuEl.children)
+// console.log(menuEl.lastElementChild)
+// console.log(menuEl.firstElementChild)
 
-const titleEl = document.createElement('h1')
-titleEl.classList.add("text-title")
-titleEl.textContent = "Hallo bratva"
-console.log(titleEl)
+// const titleEl = document.createElement('h1')
+// titleEl.classList.add("text-title")
+// titleEl.textContent = "Hallo bratva"
+// console.log(titleEl)
 
-document.body.appendChild(titleEl)
+// document.body.appendChild(titleEl)
 
-const addImgEl = document.createElement('img')
+// const addImgEl = document.createElement('img')
 
-addImgEl.classList.add('image-plus')
-console.log(addImgEl)
-addImgEl.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4_EjwinMVgDCBXMCFU5nYQZe3klwNug-lVuu3bn_XXHZHKRWLzygBvatkWWn-YTGr66k&usqp=CAU'
-addImgEl.width = "340"
-document.body.appendChild(addImgEl)
-console.log("🚀 ~ file: script.js:2090 ~ addImgEl", addImgEl)
+// addImgEl.classList.add('image-plus')
+// console.log(addImgEl)
+// addImgEl.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4_EjwinMVgDCBXMCFU5nYQZe3klwNug-lVuu3bn_XXHZHKRWLzygBvatkWWn-YTGr66k&usqp=CAU'
+// addImgEl.width = "340"
+// document.body.appendChild(addImgEl)
+// console.log("🚀 ~ file: script.js:2090 ~ addImgEl", addImgEl)
 
 
-const zzz = document.querySelector(".menu-item")
-const imgTwoEl = document.createElement('img')
-imgTwoEl.src = 'https://n1s2.hsmedia.ru/b3/38/b5/b338b527f7ebe61fd2cbf20a2a2ec5bf/690x380_0x0a330c2a_13176846571580468282.jpeg'
-imgTwoEl.width = "340"
-menuEl.appendChild(imgTwoEl)
+// const zzz = document.querySelector(".menu-item")
+// const imgTwoEl = document.createElement('img')
+// imgTwoEl.src = 'https://n1s2.hsmedia.ru/b3/38/b5/b338b527f7ebe61fd2cbf20a2a2ec5bf/690x380_0x0a330c2a_13176846571580468282.jpeg'
+// imgTwoEl.width = "340"
+// menuEl.appendChild(imgTwoEl)
+
+
+
+// -----------------бибилеотека Лоудэш и опция троттл----------------
+
+const coordsOutputRef = document.querySelector('.js-coords')
+console.log("🚀coordsOutputRef", coordsOutputRef)
+let mouseMoveCbInvocationCounter = 0;
+
+// const throttledOnMouseMove = _.throttle(onMouseMove, 500) мы перенесли рассписанную константу в функцию сразу
+
+// window.addEventListener('mousemove', _.throttle(onMouseMove, 500)) временно закоментили для того, чтобы спользовать опцию дэбаунс
+
+function onMouseMove(event) {
+  mouseMoveCbInvocationCounter += 1;
+
+  coordsOutputRef.textContent = `
+  Количество вызовов onMouseMove: ${ mouseMoveCbInvocationCounter },
+  X: ${ event.clientX }
+  Y: ${event.clientY}
+  `;
+}
+
+const inputRef = document.querySelector('.js-input')
+const outputRef = document.querySelector('.js-output')
+
+let inputCbInvocationCounter = 0;
+
+inputRef.addEventListener('input', _.debounce(onInputChange, 1000))
+
+function onInputChange(event) {
+  inputCbInvocationCounter += 1;
+
+  outputRef.textContent = `
+  Колличество вызовов onInputChange: ${inputCbInvocationCounter},
+  Значение: ${event.target.value}
+  `;
+}
+
+console.log("Hallo")
